@@ -1,0 +1,75 @@
+datapath/
+├── train/
+│   ├── projections1/
+│   │   ├── projection1.npy
+│   │   ├── projection2.npy
+│   │   ├── ...
+│   │   └── meta_data.json
+│   ├── projections2/
+│   │   ├── projection1.npy
+│   │   ├── projection2.npy
+│   │   ├── ...
+│   │   └── meta_data.json
+│   ├── ...
+│   └── projectionsN/
+│       ├── projection1.npy
+│       ├── projection2.npy
+│       ├── ...
+│       └── meta_data.json
+└── test/
+    ├── projections1/
+    │   ├── projection1.npy
+    │   ├── projection2.npy
+    │   ├── ...
+    │   └── meta_data.json
+    ├── projections2/
+    │   ├── projection1.npy
+    │   ├── projection2.npy
+    │   ├── ...
+    │   └── meta_data.json
+    ├── ...
+    └── projectionsN/
+        ├── projection1.npy
+        ├── projection2.npy
+        ├── ...
+        └── meta_data.json
+
+
+meta_data.json的格式：“{
+    "description": "该 JSON 文件用于描述锥束 CT 扫描的参数配置，包括扫描仪信息、体积数据、投影数据等。",
+    "scanner": {
+        "description": "扫描仪的参数信息。",
+        "mode": "扫描模式，例如 'cone' 表示锥束 CT。",
+        "DSD": "探测器到 X 射线源的距离（单位：cm）。",
+        "DSO": "物体到 X 射线源的距离（单位：cm）。",
+        "nDetector": "探测器的像素数量，格式为 [宽度, 高度]。",
+        "sDetector": "探测器的物理尺寸（单位：cm），格式为 [宽度, 高度]。",
+        "nVoxel": "重建体素的数量（分辨率），格式为 [X, Y, Z]。",
+        "sVoxel": "重建体素的物理尺寸（单位：cm），格式为 [X, Y, Z]。",
+        "offOrigin": "体素坐标的偏移量（单位：cm），格式为 [X, Y, Z]。",
+        "offDetector": "探测器的偏移量（单位：cm），格式为 [X, Y]。",
+        "accuracy": "计算精度的参数，通常用于数值计算的步长。",
+        "totalAngle": "总旋转角度（单位：度），例如 360.0 代表完整的圆周扫描。",
+        "startAngle": "扫描开始的角度（单位：度）。",
+        "noise": "是否添加噪声（true 或 false）。",
+        "filter": "应用的滤波器类型（可能为空）。"
+    },
+    "radius": "物体的半径（单位：cm），用于设定扫描区域。",
+    "bbox": {
+        "description": "重建体素的边界框（bounding box），定义扫描范围。",
+        "min": "边界框的最小坐标 [X, Y, Z]。",
+        "max": "边界框的最大坐标 [X, Y, Z]。"
+    },
+    "vol": "包含体数据的 Numpy (.npy) 文件路径。",
+    "projections": {
+        "description": "数据的投影列表，每个投影包含文件路径和角度。",
+        "data": [
+            {
+                "file_path": "投影数据文件路径，例如 'proj_train/0001.npy'。",
+                "angle": "该投影的扫描角度（单位：弧度）。"
+            }
+        ]
+    },
+    
+}
+”

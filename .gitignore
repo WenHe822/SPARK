@@ -1,0 +1,40 @@
+# Python cache and local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE/editor files
+.idea/
+.vscode/
+.agents/
+.codex/
+
+# Data and generated experiment artifacts
+data/
+experiments/
+experiments_out/
+output/
+save_results/
+post_train/
+wandb/
+logs/
+outputs/
+checkpoints/
+
+# Model weights, medical volumes, arrays, and binary results
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.npy
+*.npz
+*.nii
+*.nii.gz
+*.mha
+*.mhd
+*.raw
+*.bin
+
+# OS files
+.DS_Store
+Thumbs.db

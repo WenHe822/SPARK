@@ -1,0 +1,71 @@
+
+so.*
+*.jpg
+*.bmp
+*.tiff
+## Matlab ignore
+
+*.asv
+*.pdb
+
+## C ignore
+*.pyc
+## python build files
+Python/build
+Python/pytigre.egg-info/
+Python/purge.sh
+Python/.idea/
+Python/devtest.py
+Python/dist/
+Python/tigre/utilities/cuda_interface/_Atb.cpp
+Python/tigre/utilities/cuda_interface/_Ax.cpp
+Python/tigre/utilities/cuda_interface/_minTV.cpp
+Python/tigre/utilities/cuda_interface/_AwminTV.cpp
+Python/tigre/utilities/cuda_interface/_tvdenoising.cpp
+Python/tigre/utilities/cuda_interface/_gpuUtils.cpp
+.ipynb_checkpoints
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+
+*.dSYM/
+*.mexa64
+
+MATLAB/mex_CUDA_win64.xml
+
+
+*.mexw64
+
+# IDE config
+.vscode/
+
+# Miscellaneous
+*.pdf

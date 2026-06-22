@@ -1,0 +1,6 @@
+
+
+embedding: pose # [null, index, pose, ray]
+encode_embedding: positional # [null, positional, fourier]
+dimension: 32 # int
+method: film # [concat, film]

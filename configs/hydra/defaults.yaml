@@ -1,0 +1,49 @@
+---
+run:
+  dir: experiments_out/${now:%Y-%m-%d}/${now:%H-%M-%S}
+sweep:
+  dir: experiments_out/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  subdir: ${hydra.job.override_dirname}
+job:
+  chdir: True
+
+# 恢复完整日志输出
+hydra_logging:
+  version: 1
+  formatters:
+    simple:
+      format: '[%(asctime)s][HYDRA] %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: simple
+      stream: ext://sys.stdout
+  root:
+    level: INFO  # 从INFO改为INFO以显示更多日志
+    handlers:
+    - console
+  loggers:
+    logging_example:
+      level: INFO  # 从INFO改为INFO
+  disable_existing_loggers: false
+
+job_logging:
+  version: 1
+  formatters:
+    simple:
+      format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: simple
+      stream: ext://sys.stdout
+    file:
+      class: logging.FileHandler
+      formatter: simple
+      filename: ${hydra.runtime.output_dir}/${hydra.job.name}.log
+  root:
+    level: INFO  # 从INFO改为INFO以显示更多日志
+    handlers:
+    - console
+    - file
+  disable_existing_loggers: false
