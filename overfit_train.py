@@ -13,8 +13,8 @@ import argparse
 import nibabel as nib  # 用于保存nii格式
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # 导入init_training但进行自定义修改
-from train_network import  log_metrics, log_visualizations, setup_logging
-from train_network import log_parameter_histograms, save_checkpoint, is_wandb_enabled
+from legacy.train_fabric import log_metrics, log_visualizations, setup_logging
+from legacy.train_fabric import log_parameter_histograms, save_checkpoint, is_wandb_enabled
 import torch.nn.functional as F
 
 
@@ -236,7 +236,7 @@ def log_metrics(loss_dict, iteration, current_lr):
 def log_parameter_histograms(gaussian_splats, iteration):
     """
     记录高斯点参数的分布直方图到wandb
-    (移植自 train_network1.py)
+    (移植自 legacy/train_fabric_single_gpu.py)
     """
     if not is_wandb_enabled():
         return
@@ -326,7 +326,7 @@ def log_parameter_histograms(gaussian_splats, iteration):
 def log_visualizations(loss_dict, iteration, cfg):
     """
     记录可视化结果到wandb
-    (移植并适配自 train_network1.py)
+    (移植并适配自 legacy/train_fabric_single_gpu.py)
     """
     if not is_wandb_enabled():
         return
@@ -412,7 +412,7 @@ def init_training_overfit(cfg: DictConfig, experiment_name: str, output_dir: str
     fabric.launch()
     
     # 导入safe_state函数
-    from train_network import safe_state
+    from legacy.train_fabric import safe_state
     device = safe_state(cfg)
     
     # 使用自定义输出目录
@@ -1147,13 +1147,13 @@ def train_one_epoch_overfit(fabric, train_loader, model, optimizer, scheduler, e
             # 计算 SSIM
             sample_ssim_val = 0.0
             if w_ssim > 0.0:
-                from train_network import ssim
+                from legacy.train_fabric import ssim
                 sample_ssim_val = (1.0 - ssim(rendered_images, gt_images))
 
             # 计算 TV
             sample_tv_val = 0.0
             if w_tv > 0.0:
-                from train_network import tv_3d_loss, query
+                from legacy.train_fabric import tv_3d_loss, query
                 nVoxel = scanner_cfg.get("nVoxel", [32, 32, 32])
                 sVoxel = scanner_cfg.get("sVoxel", [32, 32, 32])
                 tv_vol_nVoxel = torch.tensor(nVoxel, device=device)

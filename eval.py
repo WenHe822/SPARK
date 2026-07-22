@@ -67,7 +67,7 @@ def evaluate_model(model, dataloader, cfg, device, save_vis=0, out_folder=None):
         ssim_val = ssim(rendered_images, gt_images).item()
 
         # (可选) 计算3D TV
-        # 按照train_network.py中的方式查询体数据
+        # 按照当前训练流程中的方式查询体数据
         # 使用与训练一致的方式计算TV损失
         vol_pred = query(
             gaussian_splats,

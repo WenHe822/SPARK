@@ -949,7 +949,7 @@ def validate(model, optimizer, scheduler, ema, test_loader, cfg, device, iterati
 # ----------------------------
 # 主函数
 # ----------------------------
-@hydra.main(version_base=None, config_path='configs', config_name="default_config")
+@hydra.main(version_base=None, config_path='../configs', config_name="default_config")
 def main(cfg: DictConfig):
     start_time = datetime.datetime.now()
     logger.info(f"训练开始时间: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")

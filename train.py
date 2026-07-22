@@ -353,7 +353,7 @@ def init_model_and_opt(cfg: DictConfig, rank, device):
         param.grad = None # 节约内存
 
     # --- 优化器设置 ---
-    # !!! 重要修改: 确保与 train_network.py 保存检查点时的参数组一致 !!!
+    # 确保优化器参数组与当前检查点保存和恢复逻辑一致。
     param_groups = [{'params': model.network.parameters(), 'lr': cfg.opt.base_lr}] # 使用 model.network.parameters()
     weight_decay = getattr(cfg.opt, "weight_decay", 0.01)
     optimizer = torch.optim.AdamW(

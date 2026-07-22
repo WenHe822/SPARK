@@ -17,8 +17,6 @@ import torch.nn.functional as F
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # - 移除从 train_network 导入的函数
-# from train_network import  log_metrics, log_visualizations, setup_logging
-# from train_network import log_parameter_histograms, save_checkpoint, is_wandb_enabled
 
 from datasets.dataset_readers_ct import readBlenderInfo
 from datasets.dataset_ct import DatasetCT
@@ -36,7 +34,7 @@ from r2_gaussian.gaussian import render, query # 确保这个导入是正确的
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-# +++ 从 train_network1.py 移植过来的函数 +++
+# +++ 从 legacy/train_fabric_single_gpu.py 移植过来的函数 +++
 
 # ----------------------------
 # 日志设置
@@ -248,7 +246,7 @@ def log_metrics(loss_dict, iteration, current_lr):
 def log_parameter_histograms(gaussian_splats, iteration):
     """
     记录高斯点参数的分布直方图到wandb
-    (移植自 train_network1.py)
+    (移植自 legacy/train_fabric_single_gpu.py)
     """
     if not is_wandb_enabled():
         return
@@ -338,7 +336,7 @@ def log_parameter_histograms(gaussian_splats, iteration):
 def log_visualizations(loss_dict, iteration, cfg):
     """
     记录可视化结果到wandb
-    (移植并适配自 train_network1.py)
+    (移植并适配自 legacy/train_fabric_single_gpu.py)
     """
     if not is_wandb_enabled():
         return
@@ -824,7 +822,7 @@ def overfit_collate_fn(batch, input_images_count):
 def xyz_boundary_regularization(xyz, min_coord=-1.0, max_coord=1.0, lambda_xyz_boundary=1.0):
     """
     惩罚超出 [min_coord, max_coord] 边界的 xyz 坐标。
-    (与 train_network1.py 中的版本一致)
+    (与 legacy/train_fabric_single_gpu.py 中的版本一致)
     """
     # 计算超出下边界的量 (对于 x < min_coord, 计算 min_coord - x)
     lower_penalty = torch.relu(min_coord - xyz)
@@ -839,7 +837,7 @@ def xyz_boundary_regularization(xyz, min_coord=-1.0, max_coord=1.0, lambda_xyz_b
 def density_regularization(density, threshold=0.1, lambda_density=5):
     """
     密度正则: 对低于 threshold 的密度施加惩罚
-    (移植自 train_network1.py)
+    (移植自 legacy/train_fabric_single_gpu.py)
     """
     penalty = torch.relu(threshold - density)
     loss_density_reg = lambda_density * torch.mean(penalty)

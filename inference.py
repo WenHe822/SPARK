@@ -21,7 +21,6 @@ except ImportError:
 
 # 确保项目根目录在 sys.path 中，以便导入其他模块
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# from train_network import setup_logging # setup_logging 在这里不需要，使用基本的 logging 配置
 from scene.gaussian_predictor import GaussianSplatPredictor
 from datasets.dataset_readers_ct import readBlenderInfo
 # from datasets.dataset_ct import DatasetCT # DatasetCT 在推理时不需要

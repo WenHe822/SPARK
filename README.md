@@ -19,6 +19,7 @@ scene/            Gaussian prediction networks
 r2_gaussian/      CT Gaussian rendering and voxelization
 TIGRE-2.3/        Vendored TIGRE projection toolkit
 utils/            Losses, geometry, camera, and visualization utilities
+legacy/           Historical Lightning Fabric training experiments
 train.py          Main distributed training entry point
 inference.py      Volume reconstruction and projection comparison
 inference_save_pcd.py
@@ -26,9 +27,9 @@ inference_save_pcd.py
 eval.py           Evaluation utilities
 ```
 
-The numbered training scripts are retained as legacy experiment variants.
-`train_network3.py` and the misspelled `infference*.py` files are compatibility
-entry points and may be removed in a future release.
+Historical training variants are documented in `legacy/README.md`. The
+misspelled `infference*.py` files are compatibility entry points and may be
+removed in a future release.
 
 ## Environment
 

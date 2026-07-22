@@ -126,7 +126,7 @@ def build_dataloaders(cfg: DictConfig, fabric: Fabric):
     return train_loader, val_loader
 
 # ---------------------- Main ----------------------
-@hydra.main(version_base=None, config_path='configs', config_name='default_config')
+@hydra.main(version_base=None, config_path='../configs', config_name='default_config')
 def main(cfg: DictConfig):
     # 1. Fabric init
     # <<< MODIFIED: Re-added find_unused_parameters=True based on the RuntimeError.

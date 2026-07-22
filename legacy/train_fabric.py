@@ -1072,7 +1072,7 @@ def validate(fabric: Fabric, model, optimizer, scheduler, ema, test_loader, cfg:
 # ----------------------------
 # 主函数
 # ----------------------------
-@hydra.main(version_base=None, config_path='configs', config_name="default_config")
+@hydra.main(version_base=None, config_path='../configs', config_name="default_config")
 def main(cfg: DictConfig):
     start_time = datetime.datetime.now()
 
