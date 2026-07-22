@@ -1,39 +1,80 @@
-# Python cache and local tooling
+# Python cache, environments, and local tooling
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
 
 # IDE/editor files
 .idea/
 .vscode/
 .agents/
 .codex/
+.claude/
 
-# Data and generated experiment artifacts
-data/
-experiments/
-experiments_out/
-output/
+# Datasets (keep the source-code package `datasets/` tracked)
+/data/
+/dataset/
+/dataset_raw/
+/dataset_processed/
+
+# Training, inference, and experiment artifacts
+experiments*/
+output*/
+results/
+runs/
 save_results/
 post_train/
 wandb/
 logs/
 outputs/
 checkpoints/
+lightning_logs/
+tensorboard/
+.hydra/
+artifacts/
+visualization_samples/
+render_comparison/
 
-# Model weights, medical volumes, arrays, and binary results
+# Model weights and exported models
 *.pth
 *.pt
 *.ckpt
+*.safetensors
 *.onnx
+*.pb
+*.tflite
+
+# Serialized datasets, arrays, point clouds, and medical volumes
 *.npy
 *.npz
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.mat
+*.ply
 *.nii
 *.nii.gz
 *.mha
 *.mhd
+*.nrrd
+*.nhdr
+*.dcm
+*.dicom
 *.raw
 *.bin
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
 
 # OS files
 .DS_Store
