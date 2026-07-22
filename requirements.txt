@@ -1,8 +1,10 @@
-
-tqdm
+# The CUDA extensions were developed against the PyTorch 1.12 / CUDA 11.3
+# toolchain. Install a different PyTorch build only if you also rebuild them.
+--extra-index-url https://download.pytorch.org/whl/cu113
 torch==1.12.1+cu113
 torchvision==0.13.1+cu113
-#ema-pytorch====0.7.7
+
+tqdm
 hydra-core
 omegaconf
 plyfile
@@ -11,6 +13,14 @@ einops
 imageio
 wandb
 moviepy
+nibabel
+scipy
+Pillow
+PyYAML
+matplotlib
+opencv-python
+scikit-image
+h5py
 
 markupsafe==2.0.1
 gradio
