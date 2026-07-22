@@ -175,4 +175,3 @@ dependencies:
       - xmod==1.8.1
       - yarl==1.15.2
       - zipp==3.20.2
-prefix: /home/zhouhaowei/anaconda3/envs/TMI

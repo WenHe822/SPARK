@@ -413,4 +413,3 @@ dependencies:
       - xvfbwrapper==0.2.9
       - yarl==1.15.2
       - zipp==3.20.2
-prefix: /home/haowei_zhou/anaconda3/envs/TMI

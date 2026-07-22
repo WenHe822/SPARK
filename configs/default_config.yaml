@@ -9,7 +9,7 @@
 #   random_seed: 0
 #   mixed_precision: false
 # data:
-#   data_path: /home/haowei_zhou/Project/Gaussian_splatting/TMI/data/Singleprojections_withmask
+#   data_path: data/Singleprojections_withmask
 #   training_resolution: 128
 #   input_images: 1
 #   batch_size: 4
@@ -80,7 +80,7 @@
 #   random_seed: 0
 #   mixed_precision: false
 # data:
-#   data_path: /home/haowei_zhou/Project/Gaussian_splatting/TMI/data/Singleprojections_withmask
+#   data_path: data/Singleprojections_withmask
 #   training_resolution: 128
 #   input_images: 1
 #   batch_size: 8
@@ -162,7 +162,7 @@ general:
   mixed_precision: false
 
 data:
-  data_path: /Disk_16TB/zhouhaowei/code/network_GAS/TMI/data/Sparse_challenge
+  data_path: data/Sparse_challenge
   training_resolution: 512
   input_images: 1
   batch_size: 5
@@ -183,7 +183,7 @@ opt:
     beta: 0.9999
     update_every: 10
     update_after_step: 100
-  pretrained_ckpt: /Disk_16TB/zhouhaowei/code/network_GAS/TMI/experiments_out/2025-04-25/10-24-50/logs/1/model_latest.pth
+  pretrained_ckpt: null
   # 损失权重
   w_l12: 1.0
   w_ssim: 0.2
@@ -226,13 +226,13 @@ model:
 logging:
   wandb_project: "general train_Sparse_challenge"
   wandb_run_name: "1"
-  disable_wandb: false
+  disable_wandb: true
   wandb_offline: false
   ckpt_iterations: 500
   val_log: 100
   loss_log: 10
   render_log: 10
   volume_save_interval: 10000
-  output_dir: /Disk_16TB/zhouhaowei/code/network_GAS/TMI/experiments_out
-  resume_ckpt: None
+  output_dir: experiments_out
+  resume_ckpt: null
   ckpt_every: 100
