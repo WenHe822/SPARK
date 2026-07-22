@@ -70,17 +70,17 @@ def save_gaussian_params(gaussian_splats, save_path, save_format="npy"):
     """
     # 创建保存目录
     os.makedirs(os.path.dirname(os.path.abspath(save_path)), exist_ok=True)
-    
+
     # 提取第一个批次的数据 (B=0)
     xyz = gaussian_splats['xyz'][0].detach().cpu().numpy()
     density = gaussian_splats['density'][0].detach().cpu().numpy()
     scaling = gaussian_splats['scaling'][0].detach().cpu().numpy()
     rotation = gaussian_splats['rotation'][0].detach().cpu().numpy()
-    
+
     # 对数据进行转换，确保每个点云点有位置和密度
     n_points = xyz.shape[0]
     logger.info(f"保存 {n_points} 个高斯点")
-    
+
     if save_format == "npy":
         # NPY格式: 只保存位置和密度 [x, y, z, density]
         # 按照initialize_pcd.py中的格式，将密度维度合并到最后一列
@@ -206,7 +206,7 @@ def main():
         if num_points == 0:
             logger.warning("模型输出了0个高斯点，无法保存高斯参数。")
             return
-        
+
         # 保存高斯参数
         save_gaussian_params(gaussian_splats, args.output_path, save_format)
 

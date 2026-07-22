@@ -1074,7 +1074,7 @@ def train_one_epoch(rank, world_size, train_loader, model, optimizer, scheduler,
                     if first_sample_vol_pred_vis is not None: del first_sample_vol_pred_vis
                     if first_sample_gt_image_name is not None: del first_sample_gt_image_name # 清理名称
                     # 清理文件夹名称变量 (虽然它不是在这里定义的，但保持一致性)
-                    first_sample_rendered_vis, first_sample_gt_vis, first_sample_vol_pred_vis, first_sample_gt_image_name = None, None, None, None 
+                    first_sample_rendered_vis, first_sample_gt_vis, first_sample_vol_pred_vis, first_sample_gt_image_name = None, None, None, None
 
             # --- 更新数据迭代计数器 ---
             iteration += 1
@@ -1417,4 +1417,3 @@ if __name__ == "__main__":
             print(f"设置多进程启动方法时发生错误 (可能已设置或环境不支持): {e}")
 
     main()
-    

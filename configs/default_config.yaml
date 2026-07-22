@@ -14,14 +14,14 @@
 #   input_images: 1
 #   batch_size: 4
 #   num_workers: 2
-# opt:  
+# opt:
 #   iterations: 100000
 #   base_lr: 0.000002
 #   betas: [0.9, 0.999]
 #   loss: l2
 #   imgs_per_obj: 4
 #   accumulation_steps: 2
-#   ema: 
+#   ema:
 #     use: true
 #     beta: 0.9999
 #     update_every: 10
@@ -85,14 +85,14 @@
 #   input_images: 1
 #   batch_size: 8
 #   num_workers: 2
-# opt:  
+# opt:
 #   iterations: 100000
 #   base_lr: 0.0001
 #   betas: [0.9, 0.999]
 #   loss: l1
 #   imgs_per_obj: 4
 #   accumulation_steps: 2
-#   ema: 
+#   ema:
 #     use: true
 #     beta: 0.9999
 #     update_every: 10
@@ -168,7 +168,7 @@ data:
   batch_size: 5
   num_workers: 0
   input_views: 1
-opt:  
+opt:
   iterations: 5000000
   mem_clean_interval: 1000
   min_lr_factor: 0.1
@@ -178,7 +178,7 @@ opt:
   use_fixed_lr: true
   imgs_per_obj: 4
   accumulation_steps: 1
-  ema: 
+  ema:
     use: false
     beta: 0.9999
     update_every: 10
@@ -197,7 +197,7 @@ model:
   name: SingleUNet
 
   scale_bias: 0.03
-  scale_scale: 0.1  
+  scale_scale: 0.1
 
   xyz_scale: 0.1
   xyz_bias: 0

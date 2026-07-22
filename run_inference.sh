@@ -28,20 +28,20 @@ for proj_dir in "$base_dir"/*/; do
 
     # 获取病人文件夹名称（去掉末尾的/）
     patient_name=$(basename "$proj_dir")
-    
+
     # 构造输出路径（在病人文件夹内创建init_前缀文件）
     output_path="${proj_dir}init_${patient_name}.npy"
-    
+
     # 执行推理命令
     echo "Processing: $proj_dir"
     echo "Output will be saved to: $output_path"
-    
+
     python inference_save_pcd.py \
         --proj_dir "$proj_dir" \
         --ckpt_path "$ckpt_path" \
         --config_path "$config_path" \
         --output_path "$output_path"
-    
+
     # 检查命令是否成功执行
     if [ $? -eq 0 ]; then
         echo "Successfully processed $patient_name"
